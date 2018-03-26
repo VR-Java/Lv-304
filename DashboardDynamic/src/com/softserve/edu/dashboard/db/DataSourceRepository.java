@@ -1,0 +1,33 @@
+package com.softserve.edu.dashboard.db;
+
+import java.sql.Driver;
+import java.sql.SQLException;
+
+public final class DataSourceRepository {
+	private final static String FAILED_JDBC_DRIVER = "Failed to Create JDBC Driver";
+
+	private DataSourceRepository() {
+	}
+
+	public static DataSource getDefault() {
+		return getMySqlLocalHost();
+	}
+
+	public static DataSource getMySqlLocalHost() {
+		Driver sqlDriver;
+		try {
+			sqlDriver = new com.mysql.jdbc.Driver();
+		} catch (SQLException e) {
+			// TODO Develop Custom Exceptions
+			throw new RuntimeException(FAILED_JDBC_DRIVER);
+		}
+		return new DataSource(sqlDriver,
+				"jdbc:mysql://localhost:3306/dashboard_db?autoReconnect=true&useSSL=false", "root", "root");
+	}
+
+//	public static DataSource getSybaseLocalHost() {
+//		return new DataSource(new net.sourceforge.jtds.jdbc.Driver(),
+//				"jdbc:jtds:sqlserver://VR-COMP/dashboard_db;instance=MSSQLEXPRESS;", "vr304", "vr304");
+//	}
+
+}
