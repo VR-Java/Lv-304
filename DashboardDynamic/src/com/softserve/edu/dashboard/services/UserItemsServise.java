@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import com.softserve.edu.dashboard.dao.ItemDAO;
 import com.softserve.edu.dashboard.dao.UserDAO;
 import com.softserve.edu.dashboard.dto.ItemDTO;
-import com.softserve.edu.dashboard.dto.LoginDTO;
 import com.softserve.edu.dashboard.dto.UserDTO;
 import com.softserve.edu.dashboard.dto.UserItemsDTO;
 import com.softserve.edu.dashboard.entity.ItemEntity;
@@ -26,34 +25,6 @@ public class UserItemsServise {
 		this.itemDAO = itemDAO;
 	}
 
-//	public UserItemsDTO getUserItems(LoginDTO loginDTO) {
-//		UserEntity userEntity;
-//		try {
-//			userEntity = userDAO.findByField(UserEntity.USER_ENTITY_LOGIN, loginDTO.getLogin()).get(0);
-//			UserItemsDTO userItemsDTO = new UserItemsDTO(userEntity.getLogin());
-//
-//			for (ItemEntity itemEntity : itemDAO.findAll()) {
-//				if (itemEntity.getUserId() == userEntity.getId()) {
-//					ItemDTO itemDTO = new ItemDTO(
-//											itemEntity.getId(), 
-//											itemEntity.getTitle(),
-//											itemEntity.getDescription(), 
-//											itemEntity.getUserId(), 
-//											itemEntity.getStatus());
-//					
-//					userItemsDTO.addItemDTO(itemDTO);
-//				}
-//			}
-//			return userItemsDTO;
-//		} catch (SQLException e) {
-//			// TODO handle Exception
-//			// e.printStackTrace();
-//			System.out.println("User's items not found. SQLException: " + e.getMessage());
-//			return null;
-//		}
-//	}
-	
-	
 	public UserItemsDTO getUserItems(UserDTO userDTO) {
 		UserEntity userEntity;
 		try {
@@ -62,21 +33,16 @@ public class UserItemsServise {
 
 			for (ItemEntity itemEntity : itemDAO.findAll()) {
 				if (itemEntity.getUserId() == userEntity.getId()) {
-					ItemDTO itemDTO = new ItemDTO(
-											itemEntity.getId(), 
-											itemEntity.getTitle(),
-											itemEntity.getDescription(), 
-											itemEntity.getUserId(), 
-											itemEntity.getStatus());
-					
+					ItemDTO itemDTO = new ItemDTO(itemEntity.getId(), itemEntity.getTitle(),
+							itemEntity.getDescription(), itemEntity.getUserId(), itemEntity.getStatus());
+
 					userItemsDTO.addItemDTO(itemDTO);
 				}
 			}
 			return userItemsDTO;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			// TODO handle Exception
-			// e.printStackTrace();
-			System.out.println("User's items not found. SQLException: " + e.getMessage());
 			return null;
 		}
 	}

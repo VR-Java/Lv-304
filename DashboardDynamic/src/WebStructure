@@ -1,4 +1,16 @@
 
+QUESTIONS:
+login -> put correct login & password -> go to useritems -> push back button -> 
+-> (logically session should be invalidated) -> push Register -> instead of Register page I arrive to userItems...
+
+
+
+
+
+
+
+
+
 	JSP-files:
 /WEB-INF/views/users/Login.jsp   		 ---> start page
 /WEB-INF/views/users/UserProfile.jsp

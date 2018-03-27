@@ -1,6 +1,8 @@
 package com.softserve.edu.dashboard.entity;
 
 public class ItemEntity extends AEntity{
+	
+	public static final String ITEM_ENTITY_INEDTIFIER = "item";
 
 	private String title;
 	private String description;

@@ -3,6 +3,7 @@ package com.softserve.edu.dashboard.entity;
 public class UserEntity extends AEntity {
 	
 	public static final String USER_ENTITY_LOGIN = "login";
+	public static final String USER_ENTITY_INEDTIFIER = "user";
 	
 	private String name;
 	private String login;
@@ -65,7 +66,5 @@ public class UserEntity extends AEntity {
 	public String toString() {
 		return "UserEntity [id=" + super.id +", name=" + name + ", login=" + login + ", password=" + password + ", email=" + email + "]";
 	}
-
-	
 	
 }

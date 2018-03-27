@@ -5,26 +5,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.dashboard.constants.FieldName;
 import com.softserve.edu.dashboard.entity.ItemEntity;
 
-public class ItemDAO  extends ADAO_CRUD<ItemEntity>{
+public class ItemDAO extends ADAO_CRUD<ItemEntity> {
 
 	public ItemDAO() {
 		super();
 	}
-	
+
 	@Override
 	public String getQueryPrefix() {
-		return "item";
+		return ItemEntity.ITEM_ENTITY_INEDTIFIER;
 	}
 
 	@Override
 	public ItemEntity createEntity(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
-		String title = resultSet.getString("title");
-		String description = resultSet.getString("description");
-		Long userId = resultSet.getLong("userId");
-		String status = resultSet.getString("status");
+		Long id = resultSet.getLong(FieldName.ID);
+		String title = resultSet.getString(FieldName.TITLE);
+		String description = resultSet.getString(FieldName.DESCRIPTION);
+		Long userId = resultSet.getLong(FieldName.USER_ID);
+		String status = resultSet.getString(FieldName.STATUS);
 		return new ItemEntity(id, title, description, userId, status);
 	}
 
@@ -48,6 +49,5 @@ public class ItemDAO  extends ADAO_CRUD<ItemEntity>{
 		}
 		return params;
 	}
-
 
 }

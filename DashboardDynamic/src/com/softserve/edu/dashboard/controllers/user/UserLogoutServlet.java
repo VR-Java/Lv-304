@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.softserve.edu.dashboard.constants.WebPaths;
+import com.softserve.edu.dashboard.tools.UserUtils;
 
 @WebServlet(WebPaths.LOGOUT_SERVLET)
 public class UserLogoutServlet extends HttpServlet {
@@ -20,7 +21,7 @@ public class UserLogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("doGet from UserLogoutServlet");
-		if (request.getSession() != null) {
+		if (UserUtils.isActiveSession(request)) {
 			request.getSession().invalidate();
 		}
 		request.getRequestDispatcher(WebPaths.LOGIN_JSP).forward(request, response);

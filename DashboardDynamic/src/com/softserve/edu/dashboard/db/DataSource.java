@@ -8,9 +8,7 @@ public final class DataSource {
 	private String username;
 	private String password;
 
-	// TODO Create Factory, Builder
-	public DataSource(Driver jdbcDriver,
-			String connectionUrl, String username, String password) {
+	public DataSource(Driver jdbcDriver, String connectionUrl, String username, String password) {
 		this.jdbcDriver = jdbcDriver;
 		this.connectionUrl = connectionUrl;
 		this.username = username;
@@ -18,7 +16,7 @@ public final class DataSource {
 	}
 
 	// setters
-	
+
 	public void setJdbcDriver(Driver jdbcDriver) {
 		this.jdbcDriver = jdbcDriver;
 	}
@@ -36,7 +34,7 @@ public final class DataSource {
 	}
 
 	// getters
-	
+
 	public Driver getJdbcDriver() {
 		return jdbcDriver;
 	}
@@ -55,14 +53,14 @@ public final class DataSource {
 
 	@Override
 	public boolean equals(Object dataSource) {
-		boolean result = false; 
+		boolean result = false;
 		if (dataSource instanceof DataSource) {
 			result = getJdbcDriver().getClass().getName()
-						.equals(((DataSource) dataSource).getJdbcDriver().getClass().getName())
+					.equals(((DataSource) dataSource).getJdbcDriver().getClass().getName())
 					&& getConnectionUrl().equals(((DataSource) dataSource).getConnectionUrl())
 					&& getUsername().equals(((DataSource) dataSource).getUsername())
 					&& getPassword().equals(((DataSource) dataSource).getPassword());
-		} 
+		}
 		return result;
 	}
 

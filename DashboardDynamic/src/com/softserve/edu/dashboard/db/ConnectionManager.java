@@ -11,9 +11,8 @@ public class ConnectionManager {
 	private final static String FAILED_CLOSE_CONNECTION = "Failed to Close Connection";
 	private final static String FAILED_CONNECTION = "Connection Failed";
 
-	//
 	private static volatile ConnectionManager instance = null;
-	//
+
 	private DataSource dataSource;
 	private final HashMap<Long, Connection> connections;
 
@@ -48,8 +47,7 @@ public class ConnectionManager {
 			if (getDataSource() == null) {
 				setDataSource(DataSourceRepository.getDefault());
 			}
-		} else if ((getDataSource() == null)
-				|| (!getDataSource().equals(dataSource))) {
+		} else if ((getDataSource() == null) || (!getDataSource().equals(dataSource))) {
 			setDataSource(dataSource);
 		}
 	}
@@ -92,7 +90,7 @@ public class ConnectionManager {
 				throw new RuntimeException(FAILED_CREATE_CONNECTION, e);
 			}
 			addConnection(connection);
-			System.out.println("Connected successfully!");
+//			System.out.println("Connected successfully!");
 		}
 		return connection;
 	}

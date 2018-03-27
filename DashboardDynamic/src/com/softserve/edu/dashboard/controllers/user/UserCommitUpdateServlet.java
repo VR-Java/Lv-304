@@ -7,23 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.softserve.edu.dashboard.constants.Attributes;
 import com.softserve.edu.dashboard.constants.WebPaths;
-import com.softserve.edu.dashboard.dto.UserDTO;
+import com.softserve.edu.dashboard.tools.UserUtils;
 
-@WebServlet(WebPaths.USER_CANCEL_SERVLET)
-public class UserProfileCancelUpdateServlet extends HttpServlet {
+@WebServlet(WebPaths.USER_COMMIT_SERVLET)
+public class UserCommitUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserProfileCancelUpdateServlet() {
+	public UserCommitUpdateServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doGet from UserProfileCancelUpdate");
-		UserDTO userDTO = (UserDTO) request.getSession().getAttribute(Attributes.USER_DTO);
-		if (userDTO != null) {
+		System.out.println("doGet from UserProfileCommitUpdate");
+		if (UserUtils.isActiveSession(request)) {
 			request.getRequestDispatcher(WebPaths.USER_ITEMS_SERVLET).forward(request, response);
 		} else {
 			request.getRequestDispatcher(WebPaths.LOGIN_JSP).forward(request, response);
@@ -32,7 +30,7 @@ public class UserProfileCancelUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost from UserProfileCancelUpdate");
+		System.out.println("doPost from UserProfileCommitUpdate");
 		doGet(request, response);
 	}
 

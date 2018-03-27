@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:set var="base" value="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}" />
+<c:set var="base" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,9 +11,9 @@
 <title>User Items</title>
 </head>
 <body>
-<h1>${userItemsDTO.userLogin} items:</h1>
+<h1>${userDTO.name} items:</h1>
 
-	<br> <br> User: <a href="${base}/useredit">${userItemsDTO.userLogin}</a>
+	<br> <br> User: <a href="${base}/usercreate">${userItemsDTO.userLogin}</a>
 	<br> <a href="${base}/logout">Logout</a>
 	<br> <br><a href="${base}/itemcreate">Add Item</a>
 	

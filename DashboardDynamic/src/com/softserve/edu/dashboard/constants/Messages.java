@@ -7,6 +7,6 @@ public class Messages {
 	public static final String PASSWORDS_NOT_MATCH = "Passwords do not match!"; //Messages.PASSWORDS_NOT_MATCH
 	public static final String LOGIN_UNAVAILABLE = "Login unavailable!"; //Messages.LOGIN_UNAVAILABLE
 
-
+	public static final String ITEM_NOT_EXISTS = "Item not exists!"; //Messages.ITEM_NOT_EXISTS
 
 }

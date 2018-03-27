@@ -7,24 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.softserve.edu.dashboard.constants.Attributes;
+import com.softserve.edu.dashboard.constants.FieldName;
 import com.softserve.edu.dashboard.constants.WebPaths;
-import com.softserve.edu.dashboard.dto.UserDTO;
 import com.softserve.edu.dashboard.tools.Context;
+import com.softserve.edu.dashboard.tools.UserUtils;
 
 @WebServlet(WebPaths.ITEM_DELETE_SERVLET)
-public class ItemProfileDeleteServlet extends HttpServlet {
+public class ItemDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ItemProfileDeleteServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ItemDeleteServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("doGet from ItemProfileDeleteServlet");
-		UserDTO userDTO = (UserDTO) request.getSession().getAttribute(Attributes.USER_DTO);
-		if (userDTO != null) {
-			Long idItem = Long.parseLong(request.getParameter(Attributes.ID_ITEM));
+		if (UserUtils.isActiveSession(request)) {
+			Long idItem = Long.parseLong(request.getParameter(FieldName.ID_ITEM));
 			Context.getInstance().getItemServise().deleteItemDTOById(idItem);
 			request.getRequestDispatcher(WebPaths.USER_ITEMS_SERVLET).forward(request, response);
 		} else {
@@ -32,7 +32,8 @@ public class ItemProfileDeleteServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("doPost from ItemProfileDeleteServlet");
 		doGet(request, response);
 	}

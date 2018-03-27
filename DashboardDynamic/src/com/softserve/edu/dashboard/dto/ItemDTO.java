@@ -2,15 +2,13 @@ package com.softserve.edu.dashboard.dto;
 
 public class ItemDTO {
 
-	// TODO CHECK if need all fields for ItemDTO
-
 	private long idItem;
-    private String title;
-    private String description;
-    private long idUser;
-    private String status;
+	private String title;
+	private String description;
+	private long idUser;
+	private String status;
 
-    public ItemDTO(long idItem, String title, String description, long idUser, String status) {
+	public ItemDTO(long idItem, String title, String description, long idUser, String status) {
 		this.idItem = idItem;
 		this.title = title;
 		this.description = description;
@@ -18,8 +16,8 @@ public class ItemDTO {
 		this.status = status;
 	}
 
-    // setters
-    
+	// setters
+
 	public void setIdItem(long idItem) {
 		this.idItem = idItem;
 	}
@@ -33,15 +31,15 @@ public class ItemDTO {
 	}
 
 	public void setIdUser(long idUser) {
-		this. idUser =  idUser;
+		this.idUser = idUser;
 	}
-	
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-    // getters
-	
+	// getters
+
 	public long getIdItem() {
 		return idItem;
 	}
@@ -57,7 +55,7 @@ public class ItemDTO {
 	public long getIdUser() {
 		return idUser;
 	}
-	
+
 	public String getStatus() {
 		return status;
 	}

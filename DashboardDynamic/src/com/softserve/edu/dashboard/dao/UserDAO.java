@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.dashboard.constants.FieldName;
 import com.softserve.edu.dashboard.entity.UserEntity;
 
 public class UserDAO extends ADAO_CRUD<UserEntity> {
@@ -15,16 +16,16 @@ public class UserDAO extends ADAO_CRUD<UserEntity> {
 
 	@Override
 	public String getQueryPrefix() {
-		return "user";
+		return UserEntity.USER_ENTITY_INEDTIFIER;
 	}
 
 	@Override
 	public UserEntity createEntity(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
-		String name = resultSet.getString("name");
-		String login = resultSet.getString("login");
-		String password = resultSet.getString("password");
-		String email = resultSet.getString("email");
+		Long id = resultSet.getLong(FieldName.ID);
+		String name = resultSet.getString(FieldName.NAME);
+		String login = resultSet.getString(FieldName.LOGIN);
+		String password = resultSet.getString(FieldName.PASSWORD);
+		String email = resultSet.getString(FieldName.EMAIL);
 		return new UserEntity(id, name, login, password, email);
 	}
 

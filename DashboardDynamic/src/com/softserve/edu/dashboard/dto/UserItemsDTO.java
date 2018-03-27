@@ -5,15 +5,15 @@ import java.util.List;
 
 public class UserItemsDTO {
 
-	//private String securityToken;
+	// private String securityToken;
 	private String userLogin;
 	private List<ItemDTO> items;
 
 	public UserItemsDTO(String userLogin) {
 		this.userLogin = userLogin;
-		items = new ArrayList<>(); 
+		items = new ArrayList<>();
 	}
-	
+
 	public UserItemsDTO(String userLogin, List<ItemDTO> items) {
 		this.userLogin = userLogin;
 		this.items = items;
@@ -34,7 +34,7 @@ public class UserItemsDTO {
 	}
 
 	// getters
-	
+
 	public String getUserLogin() {
 		return userLogin;
 	}

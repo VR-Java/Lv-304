@@ -2,13 +2,13 @@ package com.softserve.edu.dashboard.dto;
 
 public class UserDTO {
 
-    private long id;
-    private String name;
-    private String login;
-    private String password;
-    private String email;
+	private long id;
+	private String name;
+	private String login;
+	private String password;
+	private String email;
 
-    public UserDTO(long id, String name, String login, String password, String email) {
+	public UserDTO(long id, String name, String login, String password, String email) {
 		this.id = id;
 		this.name = name;
 		this.login = login;
@@ -16,8 +16,8 @@ public class UserDTO {
 		this.email = email;
 	}
 
-    // setters
-    
+	// setters
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -38,8 +38,8 @@ public class UserDTO {
 		this.email = email;
 	}
 
-    // getters
-    
+	// getters
+
 	public long getId() {
 		return id;
 	}
@@ -60,13 +60,4 @@ public class UserDTO {
 		return email;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDTO [id=" + id + ", name=" + name + ", login=" + login + ", password=" + password + ", email="
-				+ email + "]";
-	}
-
-	
-	
-	
 }

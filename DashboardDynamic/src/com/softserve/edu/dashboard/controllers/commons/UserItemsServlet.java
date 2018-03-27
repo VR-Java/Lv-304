@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.softserve.edu.dashboard.constants.Attributes;
+import com.softserve.edu.dashboard.constants.FieldName;
 import com.softserve.edu.dashboard.constants.WebPaths;
 import com.softserve.edu.dashboard.dto.UserDTO;
 import com.softserve.edu.dashboard.dto.UserItemsDTO;
 import com.softserve.edu.dashboard.tools.Context;
+import com.softserve.edu.dashboard.tools.UserUtils;
 
 @WebServlet(WebPaths.USER_ITEMS_SERVLET)
 public class UserItemsServlet extends HttpServlet {
@@ -24,11 +25,14 @@ public class UserItemsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("doGet from UserItemsServlet");
-		UserDTO userDTO = (UserDTO) request.getSession().getAttribute(Attributes.USER_DTO);
-		if (userDTO != null) {
-			UserItemsDTO userItemsDTO = Context.getInstance().getUserItemsServise().getUserItems(userDTO);
-			request.setAttribute(Attributes.USER_ITEMS_DTO, userItemsDTO);
-			request.getRequestDispatcher(WebPaths.USER_ITEMS_JSP).forward(request, response);
+		
+		if (UserUtils.isActiveSession(request)) {
+			UserDTO userDTO = (UserDTO) request.getSession().getAttribute(FieldName.USER_DTO);
+			if (userDTO != null) {
+				UserItemsDTO userItemsDTO = Context.getInstance().getUserItemsServise().getUserItems(userDTO);
+				request.setAttribute(FieldName.USER_ITEMS_DTO, userItemsDTO);
+				request.getRequestDispatcher(WebPaths.USER_ITEMS_JSP).forward(request, response);
+			}
 		} else {
 			request.getRequestDispatcher(WebPaths.LOGIN_JSP).forward(request, response);
 		}

@@ -25,9 +25,4 @@ public final class DataSourceRepository {
 				"jdbc:mysql://localhost:3306/dashboard_db?autoReconnect=true&useSSL=false", "root", "root");
 	}
 
-//	public static DataSource getSybaseLocalHost() {
-//		return new DataSource(new net.sourceforge.jtds.jdbc.Driver(),
-//				"jdbc:jtds:sqlserver://VR-COMP/dashboard_db;instance=MSSQLEXPRESS;", "vr304", "vr304");
-//	}
-
 }
