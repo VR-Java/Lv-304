@@ -37,7 +37,6 @@ public class ItemServise {
 		if (itemDTO.getIdItem() < 0) { // if itemDTO.getIdItem == -1, we are going to create new Item
 			try {
 				itemDAO.create(itemEntity);
-				System.out.println("Item " + itemEntity + " created");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO handle Exception
@@ -45,7 +44,6 @@ public class ItemServise {
 		} else {
 			try {
 				itemDAO.update(itemEntity);
-				System.out.println("Item " + itemEntity + " update");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO handle Exception
