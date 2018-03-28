@@ -5,11 +5,11 @@
 				<h5 class="red-text">${errorMessage}</h5>
 			</div>
 		</div>
-		<div class="footer-copyright">
+<!-- 		<div class="footer-copyright"> -->
 			<a class="grey-text text-lighten-3"
 				href="https://github.com/VR-Java/Lv-304/tree/master/DashboardDynamic">
 				Made by VR</a>
-		</div>
+<!-- 		</div> -->
 	</div>
 </footer>
 </body>

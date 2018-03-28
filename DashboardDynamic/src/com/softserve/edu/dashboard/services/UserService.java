@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.dashboard.constants.FieldName;
 import com.softserve.edu.dashboard.dao.UserDAO;
 import com.softserve.edu.dashboard.dto.UserDTO;
 import com.softserve.edu.dashboard.entity.UserEntity;
@@ -23,15 +24,9 @@ public class UserService {
 	public UserDTO getUserDTO(String login) {
 		UserEntity userEntity;
 		if (isExistLogin(login)) {
-			try {
 				userEntity = userDAO.findByField(UserEntity.USER_ENTITY_LOGIN, login).get(0);
 				return new UserDTO(userEntity.getId(), userEntity.getName(), userEntity.getLogin(),
 						userEntity.getPassword(), userEntity.getEmail());
-			} catch (SQLException e) {
-				e.printStackTrace();
-				// TODO handle Exception
-				return null;
-			}
 		}
 		return null;
 	}
@@ -50,7 +45,9 @@ public class UserService {
 			}
 		} else {
 			try {
+				userEntity.setId(userDAO.findByField(FieldName.LOGIN, userDTO.getLogin()).get(0).getId());
 				userDAO.update(userEntity);
+				System.out.println("userEntity updated");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO handle Exception
@@ -61,15 +58,10 @@ public class UserService {
 	public boolean isExistLogin(String login) {
 		boolean result = true;
 		List<UserEntity> list;
-		try {
 			list = userDAO.findByField(UserEntity.USER_ENTITY_LOGIN, login);
 			if (list.isEmpty()) {
 				return false;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			// TODO handle Exception
-		}
 		return result;
 	}
 
@@ -88,13 +80,7 @@ public class UserService {
 
 	public boolean isLogged(String login, String password) {
 		List<UserEntity> users = new ArrayList<>();
-		try {
 			users = userDAO.findByField(UserEntity.USER_ENTITY_LOGIN, login);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			// TODO handle Exception
-			return false;
-		}
 		if (users.size() == 1) {
 			if (users.get(0).getPassword().equals(password)) {
 				return true;

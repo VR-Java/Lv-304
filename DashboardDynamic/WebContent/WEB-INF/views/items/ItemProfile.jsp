@@ -5,7 +5,8 @@
 <c:set var="pageTitle" value="Item profile" />
 <c:import url="/WEB-INF/views/commons/Top.jsp" charEncoding="utf-8" />
 
-<div class="container">
+<main>
+<div class="container maxwidth600">
 
 	<div class="row center">
 		<h3>ADD NEW ITEM</h3>
@@ -39,4 +40,5 @@
 		</div>
 	</div>
 </div>
+</main>
 <c:import url="/WEB-INF/views/commons/Footer.jsp" charEncoding="utf-8" />

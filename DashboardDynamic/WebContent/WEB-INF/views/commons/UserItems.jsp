@@ -5,9 +5,10 @@
 <c:set var="pageTitle" value="User Items" />
 <c:import url="/WEB-INF/views/commons/Top.jsp" charEncoding="utf-8" />
 
+<main>
 <div class="container">
 	<div class="row center">
-		<h5>${userDTO.name} items:</h5>
+		<h5>${userDTO.name}'s items:</h5>
 	</div>
 
 	<div class="row center">
@@ -20,14 +21,14 @@
 
 	<div class="row center">
 		<div class="col s12">
-			<table>
+			<table width=100%>
 				<tr>
-					<th>Position</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Status</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th width=5%>Position</th>
+					<th width=20%>Title</th>
+					<th width=40%>Description</th>
+					<th width=15%>Status</th>
+					<th width=10%>Edit</th>
+					<th width=10%>Delete</th>
 				</tr>
 				<c:if test="${!empty userItemsDTO.items}">
 					<c:forEach items="${userItemsDTO.items}" var="item"
@@ -46,5 +47,6 @@
 		</div>
 	</div>
 </div>
+</main>
 
 <c:import url="/WEB-INF/views/commons/Footer.jsp" charEncoding="utf-8" />

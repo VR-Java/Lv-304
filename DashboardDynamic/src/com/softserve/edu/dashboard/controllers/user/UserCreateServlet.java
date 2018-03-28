@@ -32,6 +32,7 @@ public class UserCreateServlet extends HttpServlet {
 		UserDTO userDTO;
 		if (UserUtils.isActiveSession(request)) {
 			userDTO = UserUtils.updateUser(request);
+			System.out.println("user updated");
 		} else {
 			userDTO = UserUtils.createUser(request);
 		}

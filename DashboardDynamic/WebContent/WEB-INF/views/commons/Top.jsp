@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link type="text/css" rel="stylesheet" href="resourses/css/materialize.min.css">
+<link type="text/css" rel="stylesheet" href="resourses/css/myStyle.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>${pageTitle}</title>
 </head>
@@ -19,10 +20,5 @@
 				<li><a href="${base}/usercreate">${userDTO.name}</a></li>
 				<li><a href="${base}/logout">Logout</a></li>
 			</ul>
-			<ul id="nav-mobile" class="sidenav">
-				<li><a href="${base}/usercreate"> ${userDTO.name}</a></li>
-			</ul>
-			<a href="${base}/usercreate" data-target="nav-mobile"
-				class="sidenav-trigger"><i class="material-icons">${userDTO.name}</i></a>
 		</div>
 	</nav>

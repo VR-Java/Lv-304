@@ -21,10 +21,13 @@ public class UserItemsServlet extends HttpServlet {
 	public UserItemsServlet() {
 		super();
 	}
+	
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("doGet from UserItemsServlet");
+		request.getHeader("useritmes");
 		
 		if (UserUtils.isActiveSession(request)) {
 			UserDTO userDTO = (UserDTO) request.getSession().getAttribute(FieldName.USER_DTO);

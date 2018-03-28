@@ -69,12 +69,17 @@ public class UserUtils {
 	}
 
 	public static UserDTO updateUser(HttpServletRequest request) {
+		System.out.println("update");
 		if (isActiveSession(request)) {
+			System.out.println("session OK");
 			String login = ((UserDTO) request.getSession().getAttribute(FieldName.USER_DTO)).getLogin();
 			if (isAllFieldsFilled(request)) {
+				System.out.println("All filds are filled");
 				if (isPasswordsMatch(request)) {
+					System.out.println("pass OK");
 					UserDTO userDTO = new UserDTO(1, request.getParameter(FieldName.NAME), login,
 							request.getParameter(FieldName.PASSWORD), request.getParameter(FieldName.EMAIL));
+					System.out.println("setting user");
 					Context.getInstance().getUserService().setUserDTO(userDTO);
 					request.setAttribute(FieldName.USER_DTO, userDTO);
 					return userDTO;

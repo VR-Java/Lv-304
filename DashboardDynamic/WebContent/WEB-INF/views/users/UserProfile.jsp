@@ -4,7 +4,9 @@
 <c:set var="base" value="${pageContext.request.contextPath}" />
 <c:set var="pageTitle" value="User profile" />
 <c:import url="/WEB-INF/views/commons/Top.jsp" charEncoding="utf-8" />
-<div class="container">
+
+<main>
+<div class="container maxwidth800">
 
 	<div class="row center">
 		<h5>WELLCOME ${userDTO.name}!</h5>
@@ -38,4 +40,5 @@
 		</div>
 	</div>
 </div>
+</main>
 <c:import url="/WEB-INF/views/commons/Footer.jsp" charEncoding="utf-8" />

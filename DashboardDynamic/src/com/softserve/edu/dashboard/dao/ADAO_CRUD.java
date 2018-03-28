@@ -62,7 +62,7 @@ public abstract class ADAO_CRUD<TEntity extends AEntity> implements IDAO_CRUD<TE
 	}
 
 	@Override
-	public List<TEntity> findByField(String field, Object o) throws SQLException {
+	public List<TEntity> findByField(String field, Object o){
 		List<TEntity> entities = new ArrayList<>();
 		String query = SQLProperty.get(queryPrefix + ".findByField").replace("$field$", field);
 		try (PreparedStatement preparedStatement = ConnectionManager.getInstance().getConnection()
@@ -88,13 +88,16 @@ public abstract class ADAO_CRUD<TEntity extends AEntity> implements IDAO_CRUD<TE
 	@Override
 	public void update(TEntity entity) throws SQLException {
 		String query = SQLProperty.get(queryPrefix + ".updateById");
+		System.out.println(query);
 		try (PreparedStatement preparedStatement = ConnectionManager.getInstance().getConnection()
 				.prepareStatement(query)) {
 			List<Object> entityParams = getEntityParams(ADAO_CRUD.UPDATE, entity);
+			entityParams.forEach(System.out::println);
 			for (int i = 1; i <= entityParams.size(); i++) {
 				preparedStatement.setObject(i, entityParams.get(i - 1));
 			}
 			preparedStatement.execute();
+			System.out.println("All done");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// TODO myException
