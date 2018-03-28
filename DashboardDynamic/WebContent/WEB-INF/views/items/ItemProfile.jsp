@@ -1,33 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="base" value="${pageContext.request.contextPath}" />
+<c:set var="pageTitle" value="Item profile" />
+<c:import url="/WEB-INF/views/commons/Top.jsp" charEncoding="utf-8" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Item profile</title>
-</head>
-<body>
+<div class="container">
 
-<h3>ADD NEW ITEM</h3>
+	<div class="row center">
+		<h3>ADD NEW ITEM</h3>
+	</div>
 
-<form action="${base}/itemcreate" method="post">
-	Title: <input type="text" name="title" placeholder = "title" value = "${itemDTO.title}"> <br> <br>
-	Description: <input type="text" name="description" placeholder = "description" value = "${itemDTO.description}"> <br> <br>
-	Status: <input type="text" name="status" placeholder = "status" value = "${itemDTO.status}"> <br> <br>
-	
-	<input type="submit" name="submit" value="Submit" method="post"> <br> <br>
-	</form>
-	<form action="${base}/itemcancel" method="post">
-	<input type="submit" name="cancel" value="Cancel" method="post"> <br> <br>
-	</form>
-	
-	<c:if test="${not empty errorMessage}">
-		<font color="red">${errorMessage}</font>
-	</c:if>
+	<div class="row center">
+		<div class="col s12">
+			<form action="${base}/itemcreate" method="post">
+				<input type="text" name="title" placeholder="Title:"
+					value="${itemDTO.title}"> <input type="text"
+					name="description" placeholder="Description:"
+					value="${itemDTO.description}"> <input type="text"
+					name="status" placeholder="Status:" value="${itemDTO.status}">
 
-</body>
-</html>
+
+				<br> <br>
+				<button
+					class="btn col s12 waves-effect waves-light blue-grey darken-3"
+					type="submit" name="submit" value="Submit" method="post">
+					<i class="material-icons center">Submit</i>
+				</button>
+			</form>
+			<br> <br> <br>
+			<form action="${base}/itemcancel" method="post">
+				<button
+					class="btn col s12 waves-effect waves-light blue-grey darken-3"
+					type="submit" name="cancel" value="Cancel" method="post">
+					<i class="material-icons center">Cancel</i>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+<c:import url="/WEB-INF/views/commons/Footer.jsp" charEncoding="utf-8" />

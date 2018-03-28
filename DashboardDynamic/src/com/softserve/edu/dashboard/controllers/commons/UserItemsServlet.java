@@ -31,6 +31,7 @@ public class UserItemsServlet extends HttpServlet {
 			if (userDTO != null) {
 				UserItemsDTO userItemsDTO = Context.getInstance().getUserItemsServise().getUserItems(userDTO);
 				request.setAttribute(FieldName.USER_ITEMS_DTO, userItemsDTO);
+				
 				request.getRequestDispatcher(WebPaths.USER_ITEMS_JSP).forward(request, response);
 			}
 		} else {
@@ -41,6 +42,13 @@ public class UserItemsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("doPost from UserItemsServlet");
+		
+//		if(UserUtils.isActiveSession(request)) {
+//			response.sendRedirect(WebPaths.USER_ITEMS_SERVLET);
+//		} else {
+//			response.sendRedirect(WebPaths.LOGIN_SERVLET);
+//		}
+//		
 		doGet(request, response);
 	}
 

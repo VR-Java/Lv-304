@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.softserve.edu.dashboard.constants.WebPaths;
 import com.softserve.edu.dashboard.tools.UserUtils;
 
-@WebServlet({ WebPaths.HOME_SERVLET, WebPaths.LOGIN_SERVLET })
+//@WebServlet({ WebPaths.HOME_SERVLET, WebPaths.LOGIN_SERVLET })
+@WebServlet(WebPaths.LOGIN_SERVLET)
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

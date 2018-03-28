@@ -26,6 +26,10 @@ public class ItemCreateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("doGet from ItemProfileCreateServlet");
 		if (UserUtils.isActiveSession(request)) {
+//			if(((ItemDTO)request.getSession().getAttribute(FieldName.ID_ITEM))==null) {
+//				response.sendRedirect(WebPaths.USER_ITEMS_SERVLET);
+//				return;
+//			}
 				request.getRequestDispatcher(WebPaths.ITEM_PROFILE_JSP).forward(request, response);
 		} else {
 			request.getRequestDispatcher(WebPaths.LOGIN_SERVLET).forward(request, response);
